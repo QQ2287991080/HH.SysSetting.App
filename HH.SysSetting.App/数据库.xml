@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <金可儿>
+    Data Source=.;Initial Catalog=KingkoilWarrantyCard;Persist Security Info=True;User ID=sa;Pwd=123456;
+  </金可儿>
+  <鸿欢>
+    Data Source=.;Initial Catalog=KingkoilWarrantyCard;Persist Security Info=True;User ID=sa;Pwd=123456;
+  </鸿欢>
+</root>
+
