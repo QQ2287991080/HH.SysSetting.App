@@ -166,8 +166,7 @@ namespace HH.SysSetting.App
                     func = new AddFunc(Convert.ToDecimal(id));
                     break;
                 case "删除":
-                    DataHelper.Delete<BA_FunctionAuth>(id);
-                    MessageBox.Show("删除成功");
+                    RemoveFunc(id);
                     break;
                 case "查看":
                     func = new AddFunc(Convert.ToDecimal(id),true);
@@ -181,6 +180,18 @@ namespace HH.SysSetting.App
                 var result = func.ShowDialog();
             }
             LoadFuncList();
+        }
+        private void RemoveFunc(object id)
+        {
+            var conn = DataHelper.GetConnection();
+            var count = conn.QueryFirstOrDefault<int>("SELECT COUNT(*) FROM  dbo.AUTH_Role_Command WHERE IdFunctionAuth=@id", new { id });
+            if (count != 0)
+            {
+                MessageBox.Show("删除失败，该功能已绑定角色！");
+                return;
+            }
+            conn.Delete<BA_FunctionAuth>(id);
+            MessageBox.Show("删除成功");
         }
         #endregion
         #region 菜单树
@@ -275,7 +286,14 @@ namespace HH.SysSetting.App
         /// <param name="code"></param>
         private void Remove(object code)
         {
-            DataHelper.Delete<BA_SysMenu>(code);
+            var conn = DataHelper.GetConnection();
+            var count=  conn.QueryFirstOrDefault<int>("SELECT COUNT(*) FROM dbo.BA_FunctionAuth WHERE MenuCode=@code",new { code});
+            if (count!=0)
+            {
+                MessageBox.Show("删除失败，该菜单已绑定功能！");
+                return;
+            }
+            conn.Delete<BA_SysMenu>(code);
             MessageBox.Show("删除成功");
         }
         /// <summary>

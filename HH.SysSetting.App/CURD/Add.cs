@@ -128,6 +128,7 @@ namespace HH.SysSetting.App.CURD
                             InIdCode = Code.CombineCode("Read"),
                             MenuCode = Code
                         };
+                        
                         DataHelper.Insert(func, conn);
                         MessageBox.Show("新增成功");
                     }
