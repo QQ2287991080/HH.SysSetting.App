@@ -47,9 +47,6 @@
             this.BaseIconType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BaseIconColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_funclist = new System.Windows.Forms.DataGridView();
-            this.tv_menu = new System.Windows.Forms.TreeView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InIdCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,10 +56,15 @@
             this.FuncIcon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IconType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IconColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tv_menu = new System.Windows.Forms.TreeView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_menulist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_funclist)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -258,36 +260,6 @@
             this.dgv_funclist.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgv_funclist_CellBeginEdit);
             this.dgv_funclist.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_funclist_CellEndEdit);
             // 
-            // tv_menu
-            // 
-            this.tv_menu.Location = new System.Drawing.Point(12, 12);
-            this.tv_menu.Name = "tv_menu";
-            this.tv_menu.Size = new System.Drawing.Size(509, 344);
-            this.tv_menu.TabIndex = 0;
-            this.tv_menu.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.tv_menu_AfterLabelEdit);
-            this.tv_menu.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tv_menu_NodeMouseClick);
-            this.tv_menu.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tv_menu_NodeMouseDoubleClick);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.tv_menu);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(527, 620);
-            this.panel1.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
-            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 362);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(527, 258);
-            this.panel3.TabIndex = 1;
-            // 
             // Id
             // 
             this.Id.DataPropertyName = "Id";
@@ -364,6 +336,46 @@
             this.IconColor.Name = "IconColor";
             this.IconColor.Width = 125;
             // 
+            // tv_menu
+            // 
+            this.tv_menu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tv_menu.Location = new System.Drawing.Point(0, 0);
+            this.tv_menu.Name = "tv_menu";
+            this.tv_menu.Size = new System.Drawing.Size(527, 362);
+            this.tv_menu.TabIndex = 0;
+            this.tv_menu.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.tv_menu_AfterLabelEdit);
+            this.tv_menu.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tv_menu_NodeMouseClick);
+            this.tv_menu.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tv_menu_NodeMouseDoubleClick);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(527, 620);
+            this.panel1.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
+            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 362);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(527, 258);
+            this.panel3.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.tv_menu);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(527, 362);
+            this.panel4.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -379,6 +391,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_menulist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_funclist)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -414,6 +427,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FuncIcon;
         private System.Windows.Forms.DataGridViewTextBoxColumn IconType;
         private System.Windows.Forms.DataGridViewTextBoxColumn IconColor;
+        private System.Windows.Forms.Panel panel4;
     }
 }
 

@@ -106,6 +106,7 @@
     <Compile Include="Data\DataHelper.cs" />
     <Compile Include="Extensions\ModelsExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Factory\MenuStripFactory.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

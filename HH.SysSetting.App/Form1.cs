@@ -2,6 +2,7 @@
 using HH.SysSetting.App.CURD;
 using HH.SysSetting.App.Data;
 using HH.SysSetting.App.Extensions;
+using HH.SysSetting.App.Factory;
 using HH.SysSetting.App.Models;
 using HH.SysSetting.App.Models.Enums;
 using System;
@@ -58,18 +59,23 @@ namespace HH.SysSetting.App
                 t1.Name = item.BaseCodeParent;
                 t1.Tag = item.BaseMenuCode;
                 ContextMenuStrip newStrip = new ContextMenuStrip();//动态创建右键菜单
-                newStrip.Items.Add(NodeMenu.add.GetEnumDesciption());//新增平级菜单
-                newStrip.Items.Add(NodeMenu.update.GetEnumDesciption());//修改
-                newStrip.Items.Add(NodeMenu.addchildren.GetEnumDesciption());//新增子菜单
-                newStrip.Items.Add(NodeMenu.addFunc.GetEnumDesciption());//新增功能
-                newStrip.Items.Add(NodeMenu.initFunc.GetEnumDesciption());//初始化功能
-
-                if (list.Where(p => p.BaseCodeParent == item.BaseMenuCode).Count() == 0)//如果没有子节点，允许删除
+                if (item.BaseCodeParent!=null)//顶级菜单不允许有过多功能
                 {
-                    newStrip.Items.Add(NodeMenu.remove.GetEnumDesciption());//删除
+                    newStrip.Items.Add(NodeMenu.add.GetEnumDesciption());//新增平级菜单
+                    newStrip.Items.Add(NodeMenu.update.GetEnumDesciption());//修改
+                    newStrip.Items.Add(NodeMenu.addFunc.GetEnumDesciption());//新增功能
+                    if (!MenuStripFactory.IsHaveCommand(item.BaseMenuCode)&&item.Url!="#")
+                    {
+                        newStrip.Items.Add(NodeMenu.initFunc.GetEnumDesciption());//初始化功能
+                    }
+                    if (list.Where(p => p.BaseCodeParent == item.BaseMenuCode).Count() == 0)//如果没有子节点，允许删除
+                    {
+                        newStrip.Items.Add(NodeMenu.remove.GetEnumDesciption());//删除
+                    }
                 }
+
+                newStrip.Items.Add(NodeMenu.addchildren.GetEnumDesciption());//新增子菜单
                 newStrip.ItemClicked += NewStrip_ItemClicked;//动态实现右键菜单点击事件
-               
                 t1.ContextMenuStrip = newStrip;//将菜单绑定到树节点
                 treeNode.Nodes.Add(t1);
                 resolver(list, item.BaseMenuCode, t1);
@@ -79,12 +85,14 @@ namespace HH.SysSetting.App
         /// <summary>
         /// 加载功能列表
         /// </summary>
-        private void LoadFuncList()
+        private void LoadFuncList(object code=null)
         {
-            //this.dgv_funclist.Rows.Clear();
-            var tree = this.tv_menu.SelectedNode;//当前选择树节点
-            if (tree == null) return;
-            var code = tree.Tag;//功能对应的菜单code
+            if (code==null)
+            {
+                var tree = this.tv_menu.SelectedNode;//当前选择树节点
+                if (tree == null) return;
+                code = tree.Tag;//功能对应的菜单code
+            }
             var conn = DataHelper.GetConnection();
             var list = conn.GetList<BA_FunctionAuth>("where MenuCode=@code", new { code }).ToList();
             this.dgv_funclist.DataSource = list;
@@ -152,13 +160,23 @@ namespace HH.SysSetting.App
 
         private void Strip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+
             var strip = (ContextMenuStrip)sender;
             strip.Close();
+            var tree = this.tv_menu.SelectedNode;//当前选择树节点
+            if (tree == null)
+            {
+                MessageBox.Show("没选到树节点");
+                return;
+            }
+            var code = tree.Tag;//功能对应的菜单code
             //获取选中的数据
             var selected = this.dgv_funclist.SelectedRows;
             if (selected.Count == 0) return;
             var row = selected[0];
             var id = row.Cells[0].Value;
+            var codeName = row.Cells[3].Value.ToString();
+            
             AddFunc func = null;
             switch (e.ClickedItem.Text)
             {
@@ -166,6 +184,11 @@ namespace HH.SysSetting.App
                     func = new AddFunc(Convert.ToDecimal(id));
                     break;
                 case "删除":
+                    if (codeName == "Read")
+                    {
+                        MessageBox.Show("系统功能，禁止操作");
+                        return;
+                    }
                     RemoveFunc(id);
                     break;
                 case "查看":
@@ -179,7 +202,7 @@ namespace HH.SysSetting.App
                 func.StartPosition = FormStartPosition.CenterScreen;
                 var result = func.ShowDialog();
             }
-            LoadFuncList();
+            LoadFuncList(code);
         }
         private void RemoveFunc(object id)
         {
@@ -204,7 +227,6 @@ namespace HH.SysSetting.App
         {
             var now = (ContextMenuStrip)sender;
             now.Close();
-            Console.WriteLine("测试");
             var node = this.tv_menu.SelectedNode;
             if (node == null)
             {
@@ -238,7 +260,7 @@ namespace HH.SysSetting.App
                     addFunc.Dispose();
                     break;
                 case NodeMenu.initFunc:
-                    InItFunc(_code);
+                    MenuStripFactory.InItFunc(_code);
                     MessageBox.Show("操作成功");
                     break;
                 default:
@@ -254,32 +276,7 @@ namespace HH.SysSetting.App
             LoadMenuList(code);
             this.tv_menu.SelectedNode = node;
         }
-        /// <summary>
-        /// 初始化功能
-        /// </summary>
-        /// <param name="code"></param>
-        private void InItFunc(string code)
-        {
-            string[] curd = new[] { "新增", "修改", "删除" };
-            string[] curdCode = new[] { "Add", "Update", "Delete" };
-            using (var conn=DataHelper.GetConnection())
-            {
-                for (int i = 0; i < curd.Length; i++)
-                {
-                    var name = curd[i];
-                    var incode = curdCode[i];
-                    BA_FunctionAuth bA = new BA_FunctionAuth
-                    {
-                        Code = incode,
-                        Description = name,
-                        MenuCode = code,
-                        InIdCode = code.CombineCode(incode),
-                        FuncName = name
-                    };
-                    conn.Insert(bA);
-                }
-            }
-        }
+       
         /// <summary>
         /// 删除菜单
         /// </summary>
