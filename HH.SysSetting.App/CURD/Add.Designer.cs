@@ -249,14 +249,14 @@
             this.cb_menuType.Location = new System.Drawing.Point(173, 364);
             this.cb_menuType.Name = "cb_menuType";
             this.cb_menuType.Size = new System.Drawing.Size(158, 23);
-            this.cb_menuType.TabIndex = 5;
+            this.cb_menuType.TabIndex = 10;
             // 
             // txt_order
             // 
             this.txt_order.Location = new System.Drawing.Point(173, 327);
             this.txt_order.Name = "txt_order";
             this.txt_order.Size = new System.Drawing.Size(158, 25);
-            this.txt_order.TabIndex = 4;
+            this.txt_order.TabIndex = 9;
             // 
             // ckb_IsAuthority
             // 
@@ -264,7 +264,7 @@
             this.ckb_IsAuthority.Location = new System.Drawing.Point(173, 298);
             this.ckb_IsAuthority.Name = "ckb_IsAuthority";
             this.ckb_IsAuthority.Size = new System.Drawing.Size(44, 19);
-            this.ckb_IsAuthority.TabIndex = 3;
+            this.ckb_IsAuthority.TabIndex = 8;
             this.ckb_IsAuthority.Text = "是";
             this.ckb_IsAuthority.UseVisualStyleBackColor = true;
             // 
@@ -274,7 +274,7 @@
             this.ckb_isEnd.Location = new System.Drawing.Point(173, 263);
             this.ckb_isEnd.Name = "ckb_isEnd";
             this.ckb_isEnd.Size = new System.Drawing.Size(44, 19);
-            this.ckb_isEnd.TabIndex = 3;
+            this.ckb_isEnd.TabIndex = 7;
             this.ckb_isEnd.Text = "是";
             this.ckb_isEnd.UseVisualStyleBackColor = true;
             // 
@@ -284,7 +284,7 @@
             this.ckb_isvisible.Location = new System.Drawing.Point(173, 228);
             this.ckb_isvisible.Name = "ckb_isvisible";
             this.ckb_isvisible.Size = new System.Drawing.Size(44, 19);
-            this.ckb_isvisible.TabIndex = 3;
+            this.ckb_isvisible.TabIndex = 6;
             this.ckb_isvisible.Text = "是";
             this.ckb_isvisible.UseVisualStyleBackColor = true;
             // 
@@ -305,7 +305,7 @@
             this.ckb_isSysDefined.Location = new System.Drawing.Point(173, 193);
             this.ckb_isSysDefined.Name = "ckb_isSysDefined";
             this.ckb_isSysDefined.Size = new System.Drawing.Size(44, 19);
-            this.ckb_isSysDefined.TabIndex = 3;
+            this.ckb_isSysDefined.TabIndex = 5;
             this.ckb_isSysDefined.Text = "是";
             this.ckb_isSysDefined.UseVisualStyleBackColor = true;
             // 
@@ -314,42 +314,42 @@
             this.txt_iconColor.Location = new System.Drawing.Point(173, 480);
             this.txt_iconColor.Name = "txt_iconColor";
             this.txt_iconColor.Size = new System.Drawing.Size(158, 25);
-            this.txt_iconColor.TabIndex = 1;
+            this.txt_iconColor.TabIndex = 13;
             // 
             // txt_icontype
             // 
             this.txt_icontype.Location = new System.Drawing.Point(173, 440);
             this.txt_icontype.Name = "txt_icontype";
             this.txt_icontype.Size = new System.Drawing.Size(158, 25);
-            this.txt_icontype.TabIndex = 1;
+            this.txt_icontype.TabIndex = 12;
             // 
             // txt_icon
             // 
             this.txt_icon.Location = new System.Drawing.Point(173, 402);
             this.txt_icon.Name = "txt_icon";
             this.txt_icon.Size = new System.Drawing.Size(158, 25);
-            this.txt_icon.TabIndex = 1;
+            this.txt_icon.TabIndex = 11;
             // 
             // txt_url
             // 
             this.txt_url.Location = new System.Drawing.Point(173, 152);
             this.txt_url.Name = "txt_url";
             this.txt_url.Size = new System.Drawing.Size(158, 25);
-            this.txt_url.TabIndex = 1;
+            this.txt_url.TabIndex = 4;
             // 
             // txt_description
             // 
             this.txt_description.Location = new System.Drawing.Point(173, 117);
             this.txt_description.Name = "txt_description";
             this.txt_description.Size = new System.Drawing.Size(158, 25);
-            this.txt_description.TabIndex = 1;
+            this.txt_description.TabIndex = 3;
             // 
             // txt_name
             // 
             this.txt_name.Location = new System.Drawing.Point(173, 82);
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(158, 25);
-            this.txt_name.TabIndex = 1;
+            this.txt_name.TabIndex = 2;
             // 
             // txt_codeParent
             // 
