@@ -104,6 +104,18 @@
       <DependentUpon>AddFunc.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\DataHelper.cs" />
+    <Compile Include="EnType\Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnType\Add.Designer.cs">
+      <DependentUpon>Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EnType\EnTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnType\EnTypeForm.Designer.cs">
+      <DependentUpon>EnTypeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\ModelsExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Factory\MenuStripFactory.cs" />
@@ -116,6 +128,7 @@
     <Compile Include="Models\BA_FunctionAuth.cs" />
     <Compile Include="Models\BA_MenuTree.cs" />
     <Compile Include="Models\BA_MenuTreeRelation.cs" />
+    <Compile Include="Models\BA_SysEnType.cs" />
     <Compile Include="Models\BA_SysMenu.cs" />
     <Compile Include="Models\Enums\AppEnum.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
@@ -126,6 +139,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CURD\AddFunc.resx">
       <DependentUpon>AddFunc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EnType\Add.resx">
+      <DependentUpon>Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EnType\EnTypeForm.resx">
+      <DependentUpon>EnTypeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

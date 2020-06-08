@@ -17,5 +17,23 @@ namespace HH.SysSetting.App.Extensions
             if (string.IsNullOrEmpty(str)) return null;
             return str;
         }
+
+        public static decimal ToDecimal(this string str)
+        {
+            return Convert.ToDecimal(str);
+        }
+
+        public static decimal? ToNullDecimal(this string str)
+        {
+            if (string.IsNullOrEmpty(str)) return null;
+            return Convert.ToDecimal(str);
+        }
+
+        public static bool ToBoolean(this bool? boolen)
+        {
+            if (boolen == null) return false;
+            return Convert.ToBoolean(boolen);
+        }
+
     }
 }

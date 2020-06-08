@@ -15,6 +15,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using System.Windows.Forms;
@@ -53,6 +54,10 @@ namespace HH.SysSetting.App
         /// <param name="treeNode"></param>
         private void resolver(List<BA_SysMenu> list, string code, TreeNode treeNode)
         {
+            //Thread thread = new Thread(() => Console.WriteLine(""));
+            //thread.Start();
+
+            
             foreach (var item in list.Where(p => p.BaseCodeParent == code).OrderBy(o => o.MenuOrder))
             {
                 TreeNode t1 = new TreeNode(item.BaseDescription);

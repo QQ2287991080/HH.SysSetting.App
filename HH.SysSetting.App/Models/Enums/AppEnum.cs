@@ -57,4 +57,17 @@ namespace HH.SysSetting.App.Models.Enums
         IsEndGrade = 13,
         IsAuthority = 14
     }
+
+
+    public enum NodeEnType
+    {
+        [Description("新增")]
+        add = 1,
+        [Description("修改")]
+        update = 2,
+        [Description("删除")]
+        delete = 3,
+        [Description("批量新增")]
+        builk = 4
+    }
 }

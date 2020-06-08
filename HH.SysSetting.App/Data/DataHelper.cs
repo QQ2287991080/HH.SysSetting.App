@@ -104,6 +104,19 @@ namespace HH.SysSetting.App.Data
                 return conn.Delete(t);
             }
         }
+        public static int Insert<T>(T t)
+        {
+            var func = ModelsExtensions.InsertDelegate(t);
+            var data = func.Invoke(t);
+            return GetConnection().Execute(data.Item1, data.Item2);
+        }
+        public static List<T> Query<T>(string where="true")
+        {
+            using (var conn=GetConnection())
+            {
+               return conn.Query<T>(where).ToList();
+            }
+        }
         #endregion
         #region 有数据库连接的情况下
         public static int Insert<T>(T t,IDbConnection connection,IDbTransaction transaction=null)
