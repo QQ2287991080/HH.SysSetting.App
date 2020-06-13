@@ -39,6 +39,10 @@ namespace HH.SysSetting.App
         {
             tv_menu.Nodes.Clear();
             TreeNode treeNode = new TreeNode("菜单树");
+            ContextMenuStrip newStrip = new ContextMenuStrip();//动态创建右键菜单
+            newStrip.Items.Add("刷新");
+            newStrip.Click += NewStrip_Click;
+            treeNode.ContextMenuStrip = newStrip;
             var conn = DataHelper.GetConnection();
             var list = conn.GetList<BA_SysMenu>().ToList();
             resolver(list, null, treeNode);
@@ -46,6 +50,18 @@ namespace HH.SysSetting.App
             tv_menu.LabelEdit = true;
             tv_menu.ExpandAll();
         }
+        /// <summary>
+        /// 刷新菜单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NewStrip_Click(object sender, EventArgs e)
+        {
+            var now = (ContextMenuStrip)sender;
+            now.Close();
+            LoadTree();
+        }
+
         /// <summary>
         /// 递归菜单
         /// </summary>
@@ -189,11 +205,11 @@ namespace HH.SysSetting.App
                     func = new AddFunc(Convert.ToDecimal(id));
                     break;
                 case "删除":
-                    if (codeName == "Read")
-                    {
-                        MessageBox.Show("系统功能，禁止操作");
-                        return;
-                    }
+                    //if (codeName == "Read")
+                    //{
+                    //    MessageBox.Show("系统功能，禁止操作");
+                    //    return;
+                    //}
                     RemoveFunc(id);
                     break;
                 case "查看":

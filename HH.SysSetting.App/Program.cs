@@ -33,7 +33,7 @@ namespace HH.SysSetting.App
             //    MessageBox.Show("连接数据库失败，请开发人员检查数据库连接字符串能否正确！");
             //    return;
             //}
-            Application.Run(new EnTypeForm());
+            Application.Run(new Form1());
         }
     }
 }
