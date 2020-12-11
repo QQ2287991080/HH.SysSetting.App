@@ -31,6 +31,18 @@ namespace HH.SysSetting.App
             //加载树
             LoadTree();
         }
+
+        public Form1(DataSource data)
+        {
+            //初始化连接参数
+            DataHelper helper = new DataHelper(data.Value);
+            InitializeComponent();
+            this.Text = $"菜单功能设置===【当前项目：{data.Name}】";
+            this.StartPosition = FormStartPosition.CenterScreen;
+            //加载树
+            LoadTree();
+
+        }
         #region 窗体加载时
         /// <summary>
         /// 加载树
@@ -439,5 +451,9 @@ namespace HH.SysSetting.App
 
         #endregion
 
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }

@@ -14,10 +14,12 @@ namespace HH.SysSetting.App.Data
 {
     public class DataHelper
     {
-        private static string connectionStr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+        // private static string connectionStr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
 
-        public DataHelper()
+        private static string connectionStr;
+        public DataHelper(string con)
         {
+            connectionStr = con;
             SqlConnection conn = new SqlConnection();
         }
 

@@ -1,0 +1,13 @@
+{
+  "DataSource": [
+    {
+      "Name": "施耐德",
+      "Value": "Data Source=47.114.175.250;Initial Catalog=SchneiderEPP_2020_07_02;Persist Security Info=False;User ID=sa;Password=QWERasdf123456789;"
+    },
+    {
+      "Name": "施耐德2",
+      "Value": "Data Source=47.114.175.250;Initial Catalog=Schneider_Visit_Db;Persist Security Info=False;User ID=sa;Password=QWERasdf123456789;"
+    }
+  ]
+   
+}

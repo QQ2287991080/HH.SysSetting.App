@@ -58,8 +58,8 @@
             this.IconColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tv_menu = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_menulist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_funclist)).BeginInit();
@@ -357,6 +357,15 @@
             this.panel1.Size = new System.Drawing.Size(527, 620);
             this.panel1.TabIndex = 0;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.tv_menu);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(527, 362);
+            this.panel4.TabIndex = 2;
+            // 
             // panel3
             // 
             this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
@@ -366,15 +375,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(527, 258);
             this.panel3.TabIndex = 1;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.tv_menu);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(527, 362);
-            this.panel4.TabIndex = 2;
             // 
             // Form1
             // 
@@ -387,6 +387,7 @@
             this.IsMdiContainer = true;
             this.Name = "Form1";
             this.Text = "菜单功能设置";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_menulist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_funclist)).EndInit();
